@@ -5,9 +5,6 @@ struct CaseStudyTabView: View {
         TabView {
             VStack {
                 LifecycleMonitor(label: "Tab 1")
-                Text("`TabView` initializes the state for each tab’s content view all at once when it first appears. `onAppear` and `onDisappear` get called as you switch between tabs. State of offscreen tabs is kept alive.")
-                    .font(.callout)
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding()
             .tabItem {
@@ -28,6 +25,14 @@ struct CaseStudyTabView: View {
                 .tabItem {
                     Label("Tab 4", systemImage: "4.circle")
                 }
+        }
+        .padding()
+        .safeAreaInset(edge: .bottom) {
+            Text("`TabView` initializes the state for each tab’s content view all at once when it first appears. `onAppear` and `onDisappear` get called as you switch between tabs. State of offscreen tabs is kept alive.")
+                .font(.callout)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.regularMaterial)
         }
         .navigationTitle("TabView")
     }

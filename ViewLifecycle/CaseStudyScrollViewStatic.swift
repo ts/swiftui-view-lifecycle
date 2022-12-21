@@ -5,10 +5,6 @@ struct CaseStudyScrollViewStatic: View {
         ScrollView {
             LifecycleMonitor(label: "ScrollView top")
 
-            Text("Nesting views in a ScrollView has no effect on those views’ lifecycle events. The entire content of the scroll view appears immediately when the scroll view appears, regardless of whether it’s on screen or not.")
-                .font(.callout)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
 
             VStack {
                 Image(systemName: "arrow.down.circle.fill")
@@ -20,6 +16,13 @@ struct CaseStudyScrollViewStatic: View {
             Spacer(minLength: 2000)
 
             LifecycleMonitor(label: "ScrollView bottom")
+        }
+        .safeAreaInset(edge: .bottom) {
+            Text("Nesting views in a `ScrollView` has no effect on those views’ lifecycle events. The entire content of the scroll view appears immediately when the scroll view appears, regardless of whether it’s on screen or not.")
+                .font(.callout)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.regularMaterial)
         }
         .navigationTitle("Static ScrollView")
     }
